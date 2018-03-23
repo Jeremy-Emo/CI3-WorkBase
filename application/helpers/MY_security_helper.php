@@ -11,8 +11,9 @@ if (!function_exists('hashPassword')) {
 if (!function_exists('verifyPassword')) {
   //Vérification du mot de passe en fonction d'une adresse mail
   function verifyPassword($str, $mail) {
-    $this->load->model('auth_model');
-    if($info = $this->user_model->search('*', array('mail', $mail))){
+    $CI =& get_instance();
+    $CI->load->model('auth_model');
+    if($info = $CI->user_model->search('*', array('mail', $mail))){
       $hash = $info[0]->password;
       return password_verify($str, $hash);
     } else {

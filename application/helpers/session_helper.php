@@ -2,11 +2,13 @@
 
 function setLogin($userId) {
   //Initialisation des variables de session nécessaires
-  $this->session->set_userdata('logged', TRUE);
-  $this->session->set_userdata('userId', $userId);
+  $CI =& get_instance();
+  $CI->session->set_userdata('logged', TRUE);
+  $CI->session->set_userdata('userId', $userId);
 }
 
 function disconnect() {
   //Déconnexion
-  $this->session->sess_destroy();
+  $CI =& get_instance();
+  $CI->session->sess_destroy();
 }
