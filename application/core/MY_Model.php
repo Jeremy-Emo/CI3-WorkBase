@@ -7,6 +7,19 @@ Chaque classe héritant de celle-ci doit posséder un attribut $table de type pr
 Celui-ci étant la table de la BDD associée. Le but est de ne pas multiplier les fonctions
 où la seule différence est la table sur laquelle on execute les requêtes. */
 
+  //On initialise la variable id_table, correspondant à l'id par défaut des tables
+  protected $id_table = "";
+
+  public function __construct()
+  {
+    parent::__construct();
+    //Si l'id par défaut n'existe pas, on le nomme par défaut 'id'
+    if( $this->id_table == "" )
+    {
+      $this->id_table = 'id';
+    }
+  }
+
   public function search($select = '*', $filter = array(), $limit = NULL, $offset = NULL)
   {
     /*Fonction de recherche sur la BDD en fonction de filtres.
@@ -39,7 +52,7 @@ où la seule différence est la table sur laquelle on execute les requêtes. */
   public function getById($id)
   {
     //Fonction de recherche en fonction d'un id
-    $info = $this->db->query("SELECT * from {$this->table} WHERE id = $id");
+    $info = $this->db->query("SELECT * from {$this->table} WHERE {$this->id_table} = $id");
     return $info->result();
   }
 
@@ -82,7 +95,7 @@ où la seule différence est la table sur laquelle on execute les requêtes. */
 
   public function deleteById($id)
   {
-    $this->db->where('id', $id);
+    $this->db->where($this->id_table, $id);
     return $this->db->delete($this->table);
   }
 

@@ -4,6 +4,14 @@ class User_model extends MY_Model {
 
   protected $table = 'users';
 
+  public function __construct()
+  {
+    parent::__construct();
+    //Id par défaut de la table
+    $this->id_table = 'id';
+  }
+
+
   public function isAdmin($userId)
   {
     //Vérifie si l'utilisateur authentifé est un administrateur du site
