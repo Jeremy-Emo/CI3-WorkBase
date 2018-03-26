@@ -95,6 +95,7 @@ où la seule différence est la table sur laquelle on execute les requêtes. */
 
   public function deleteById($id)
   {
+    //Fonction de suppression en fonction d'un id
     $this->db->where($this->id_table, $id);
     return $this->db->delete($this->table);
   }
