@@ -14,6 +14,13 @@ if (!function_exists('base64urlDecode')) {
 	}
 }
 
+if (!function_exists('objectIntoArray')) {
+  //Décodage du base64 pour URL
+	function objectIntoArray($value) {
+	    return json_decode(json_encode($value), true);
+	}
+}
+
 if (!function_exists('cssLink')) {
   //Génère un lien vers un fichier CSS tout en y ajoutant les attributs integrity et crossorigin si précisés
   function cssLink($nom, $cdn = NULL, $cors = NULL) {
