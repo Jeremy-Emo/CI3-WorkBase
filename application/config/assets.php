@@ -22,3 +22,13 @@ $config['css'] = array(
 $config['js'] = array(
   'jquery-3.3.1.min.js'
 );
+
+
+//Configuration pour environnement de production
+$config['cssProd'] = array(
+
+);
+
+$config['jsProd'] = array(
+
+);

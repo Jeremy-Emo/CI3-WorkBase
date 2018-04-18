@@ -29,10 +29,17 @@ class Template {
 
             $CI =& get_instance();
             $CI->config->load('assets');
+            if(ENVIRONMENT == 'production'){
+                $cssFile = $CI->config->item('cssProd');
+                $jsFile = $CI->config->item('jsProd');
+            }else {
+              $cssFile = $CI->config->item('css');
+              $jsFile = $CI->config->item('js');
+            }
 
             //Pour chaque entrée dans le fichier de config "assets.php" on génère le lien dans le header
             $assets = '';
-            foreach($CI->config->item('css') as $css){
+            foreach($cssFile as $css){
               if(is_array($css)){
                 //Dans le cas d'un array on passe tout les paramètres
                 $assets .= cssLink($css['file'], $css['cdn'], $css['cors']) . "\n";
@@ -40,7 +47,7 @@ class Template {
                 $assets .= cssLink($css) . "\n";
               }
             }
-            foreach($CI->config->item('js') as $js){
+            foreach($jsFile as $js){
               if(is_array($js)){
                 //Dans le cas d'un array on passe tout les paramètres
                 $assets .= jsScript($js['file'], $js['cdn'], $js['cors']) . "\n";
