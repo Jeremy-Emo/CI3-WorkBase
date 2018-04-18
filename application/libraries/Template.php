@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Template {
 
-        public function render($view, $data = NULL)
+        public function render($view, $data = NULL, $dataHead = NULL)
         {
 
             $CI =& get_instance();
@@ -13,8 +13,12 @@ class Template {
               $CI->output->enable_profiler(TRUE);
             }
 
+            if($dataHead == NULL){
+              $data->title = $CI->config->item('defaultTitle');
+            }
+
             //On charge les 3 vues du template en y passant l'objet $data
-            $CI->load->view('layout/head.php', $data);
+            $CI->load->view('layout/head.php', $dataHead);
             $CI->load->view($view, $data);
             $CI->load->view('layout/foot.php');
 

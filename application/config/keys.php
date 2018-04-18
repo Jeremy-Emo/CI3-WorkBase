@@ -8,3 +8,6 @@ $config['modeOff'] = FALSE;
 //Clés google reCaptcha
 $config['captchaPrivateKey'] = '';
 $config['captchaPublicKey'] = '';
+
+//Titre par défaut
+$config['defaultTitle'] = 'Mon site';

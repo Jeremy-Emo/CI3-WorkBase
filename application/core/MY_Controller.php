@@ -47,20 +47,6 @@ class Private_Controller extends Public_Controller {
 }
 
 
-class Admin_Controller extends Private_Controller {
-//Controller nécessitant une authentification
-
-    public function __construct()
-    {
-      parent::__construct();
-      if( ! $this->auth_model->isAdmin($this->session->userdata('userId')) ){
-  			redirect('/', 'refresh');
-  		}
-    }
-
-}
-
-
 class CLI_Controller extends CI_Controller {
 //Controller accessible en ligne de commande uniquement (utilisation de scripts ou de tâches cron)
 

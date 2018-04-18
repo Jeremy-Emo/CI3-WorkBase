@@ -11,17 +11,4 @@ class User_model extends MY_Model {
     $this->id_table = 'id';
   }
 
-
-  public function isAdmin($userId)
-  {
-    //Vérifie si l'utilisateur authentifé est un administrateur du site
-    $query = "SELECT * FROM user WHERE id_user = $userId";
-    $res = $this->db->query($query);
-    if($res->admin) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
 }
