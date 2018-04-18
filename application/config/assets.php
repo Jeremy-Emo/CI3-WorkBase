@@ -30,5 +30,5 @@ $config['cssProd'] = array(
 );
 
 $config['jsProd'] = array(
-
+  'jquery-3.3.1.min.js'
 );

@@ -29,7 +29,7 @@ class Template {
 
             $CI =& get_instance();
             $CI->config->load('assets');
-            if(ENVIRONMENT == 'production'){
+            if(ENVIRONMENT == 'production' && $CI->config->item('assetsForProd')){
                 $cssFile = $CI->config->item('cssProd');
                 $jsFile = $CI->config->item('jsProd');
             }else {
